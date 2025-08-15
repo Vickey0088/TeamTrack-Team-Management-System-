@@ -1,0 +1,25 @@
+className=" text-black 
+           outline-none bg-transparent border-2 border-emerald-600 text-xl py-3 px-5  rounded-full placeholder:text-white "
+            type="email"
+            placeholder="Enter your Email"
+          />
+=======
+          <input
+            className="text-black outline-none bg-transparent border-2 border-emerald-600 text-xl py-3 px-5 rounded-full placeholder:text-white"
+            type="email"
+            placeholder="Enter your Email"
+          />
+>>>>>>> REPLACE
+
+<<<<<<< SEARCH
+          <input
+            className=" text-black outline-none bg-transparent border-2 border-emerald-600 text-xl rounded-full py-3 px-5 mt-3 placeholder:text-white"
+            type="password"
+            placeholder="Enter your Password"
+          />
+=======
+          <input
+            className="text-black outline-none bg-transparent border-2 border-emerald-600 text-xl rounded-full py-3 px-5 mt-3 placeholder:text-white"
+            type="password"
+            placeholder="Enter your Password"
+          />

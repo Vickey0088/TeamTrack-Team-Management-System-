@@ -1,0 +1,70 @@
+.all-task-outer {
+  background: #302e2e;
+  padding: 20px;
+  border-radius: 0.5rem;
+  margin-top: 20px;
+}
+
+.all-task-inner {
+  background: #9b8d8d; /* Tailwind's bg-red-400 */
+  padding: 8px 16px;
+  border-radius: 0.5rem;
+  margin-bottom: 20px;
+  display: flex;
+ 
+
+}
+
+.all-task-inner h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: #060606;
+  width: 20%;
+  font-size: 30px;
+  font-weight: 900px;
+}
+
+.all-task-inner h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+   padding: 10px;
+ 
+    border-radius: 10px;
+  color: #045604;
+   align-items: center;
+ width: 20%;
+ font-weight: 900px;
+}
+
+.all-task-inner h5 {
+  margin: 0;
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: 900px;
+ 
+  color: #981c1c;
+  border-radius: 10px;
+  align-items: center;
+  opacity: 0.8;
+  width: 20%;
+}
+
+.ListName{
+  height: 80%;
+  overflow: auto;
+}
+
+.hello{
+  background-color: rgb(5, 5, 4);
+  
+}
+.hello h1{
+  color:white;
+}
+.hello h3{
+  color:white;
+}
+.hello h5{
+  color:white;
+}

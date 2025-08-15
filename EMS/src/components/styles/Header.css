@@ -1,0 +1,16 @@
+.btn{
+    color: rgb(242, 237, 237);
+    padding: 10px 20px;
+    background-color: #ec0b0b;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.hh{
+   margin-left: 10px;
+   font-size: 25px;
+}
+.hh .text-3xl{
+    font-size: 40px;
+    color: rgb(105, 218, 105)
+}
