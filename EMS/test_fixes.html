@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Local Storage Fixes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Test Local Storage Fixes</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Category Updates</h2>
+        <button onclick="testCategoryUpdate()">Test Category Update</button>
+        <div id="category-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Data Refresh</h2>
+        <button onclick="testDataRefresh()">Test Data Refresh</button>
+        <div id="refresh-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Local Storage Content</h2>
+        <button onclick="showLocalStorage()">Show Current Data</button>
+        <div id="storage-result" class="result"></div>
+    </div>
+
+    <script>
+        function testCategoryUpdate() {
+            const result = document.getElementById('category-result');
+            
+            // Get current employees
+            const employees = JSON.parse(localStorage.getItem('employees') || '[]');
+            if (employees.length === 0) {
+                result.innerHTML = 'No employee data found. Please login first.';
+                return;
+            }
+            
+            // Add a new category to first employee
+            const newCategory = 'Testing Category ' + new Date().toLocaleTimeString();
+            if (!employees[0].categories) {
+                employees[0].categories = [];
+            }
+            employees[0].categories.push(newCategory);
+            
+            // Save back to localStorage
+            localStorage.setItem('employees', JSON.stringify(employees));
+            
+            // Dispatch update event
+            window.dispatchEvent(new CustomEvent('localStorageUpdated'));
+            
+            result.innerHTML = `Added category: ${newCategory}<br>
+                              Current categories: ${employees[0].categories.join(', ')}`;
+        }
+        
+        function testDataRefresh() {
+            const result = document.getElementById('refresh-result');
+            
+            // Simulate admin login by reading fresh data
+            const employees = JSON.parse(localStorage.getItem('employees') || '[]');
+            
+            if (employees.length > 0) {
+                result.innerHTML = `Data refreshed successfully!<br>
+                                  Employee count: ${employees.length}<br>
+                                  First employee: ${employees[0].first_name}<br>
+                                  Tasks: ${employees[0].tasks?.length || 0}`;
+            } else {
+                result.innerHTML = 'No employee data found.';
+            }
+        }
+        
+        function showLocalStorage() {
+            const result = document.getElementById('storage-result');
+            const employees = JSON.parse(localStorage.getItem('employees') || '[]');
+            
+            if (employees.length > 0) {
+                let html = '<h3>Current Employee Data:</h3>';
+                employees.forEach(emp => {
+                    html += `<div>
+                        <strong>${emp.first_name}</strong><br>
+                        Tasks: ${emp.tasks?.length || 0}<br>
+                        Categories: ${emp.categories?.join(', ') || 'None'}<br>
+                        Task Numbers: ${JSON.stringify(emp.task_number || {})}
+                    </div><br>`;
+                });
+                result.innerHTML = html;
+            } else {
+                result.innerHTML = 'No employee data found.';
+            }
+        }
+    </script>
+</body>
+</html>

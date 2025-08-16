@@ -10,6 +10,7 @@ const employees = [
       completed: 1,
       failed: 1
     },
+    categories: ["Finance", "Data Entry", "HR"],
     tasks: [
       {
         title: "Prepare Q2 Report",
@@ -54,6 +55,7 @@ const employees = [
       completed: 1,
       failed: 1
     },
+    categories: ["Design", "Development", "Performance"],
     tasks: [
       {
         title: "Design Landing Page",
@@ -98,6 +100,7 @@ const employees = [
       completed: 1,
       failed: 1
     },
+    categories: ["Marketing", "Analytics", "Email"],
     tasks: [
       {
         title: "Social Media Calendar",
@@ -142,6 +145,7 @@ const employees = [
       completed: 1,
       failed: 1
     },
+    categories: ["Operations", "Logistics", "Purchasing"],
     tasks: [
       {
         title: "Vendor Meeting",
@@ -186,6 +190,7 @@ const employees = [
       completed: 1,
       failed: 1
     },
+    categories: ["Support", "Meetings", "Customer Success"],
     tasks: [
       {
         title: "Customer Support Tickets",
@@ -240,4 +245,19 @@ const employees = [
     const admin = JSON.parse(localStorage.getItem('admin'));
 
     return {employees,admin}
+  }
+
+  export const refreshLocalStorage = () => {
+    // Force refresh by reading latest data
+    const data = getLocalStorage();
+    
+    // Dispatch event for all components to update
+    window.dispatchEvent(new CustomEvent('localStorageUpdated'));
+    
+    return data;
+  }
+
+  export const updateEmployeeData = (updatedEmployees) => {
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    refreshLocalStorage();
   }

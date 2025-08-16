@@ -32,7 +32,6 @@ const CreateTask = () => {
       if (asignTo.trim().toLowerCase() === elem.first_name.toLowerCase()) {
         if (!Array.isArray(elem.tasks)) elem.tasks = [];
         elem.tasks.push(taskObj);
-        console.log(elem);
 
         if (!Array.isArray(elem.categories)) elem.categories = [];
         if (category && !elem.categories.includes(category)) {
@@ -58,9 +57,13 @@ const CreateTask = () => {
 
     localStorage.setItem("employees", JSON.stringify(data));
 
+    // Force refresh of data across all components
     if (authData.refreshData) {
       authData.refreshData();
     }
+
+    // Dispatch custom event for immediate UI updates
+    window.dispatchEvent(new CustomEvent('localStorageUpdated'));
 
     setTaskTitle("");
     setTaskDate("");
